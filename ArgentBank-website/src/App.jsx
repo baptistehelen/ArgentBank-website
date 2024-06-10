@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { User } from "./components/User";
+import { Profile } from "./components/Profile";
 import { Home } from "./components/Home";
 import { Signin } from "./components/Signin";
 import { Navbar } from "./layout/Navbar";
@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/sign-in" element={<Signin />} />
       </Routes>
       <Footer />
