@@ -39,6 +39,10 @@ const signInSlice = createSlice({
       clearError: state => {
         state.error = null;
       },
+      Logout: state => {
+        state.user = null;
+        console.log('Vous êtes déconnecté !');
+      },
     },
     extraReducers: builder => {
       builder
@@ -54,5 +58,7 @@ const signInSlice = createSlice({
   });
 
 export const { clearError } = signInSlice.actions;
+export const { Logout } = signInSlice.actions;
 
 export default signInSlice.reducer;
+
