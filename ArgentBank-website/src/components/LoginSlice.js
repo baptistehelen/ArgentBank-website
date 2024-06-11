@@ -18,8 +18,11 @@ export const signInUser = createAsyncThunk(
       
       const data = await response.json();
       
+      const token = data.body.token;
+      console.log('Token récupéré !', token);
+
       console.log('Connexion réussie !', data); 
-      return { user: data, redirectTo: '/profile' };
+      return { user: data, redirectTo: '/profile', token };
     } catch (error) {
       console.error('Erreur de connexion :', error); 
       throw error;
@@ -27,13 +30,12 @@ export const signInUser = createAsyncThunk(
   }
 );
 
-
-
 const signInSlice = createSlice({
     name: 'signIn',
     initialState: {
       user: null,
       error: null,
+      token: null,
     },
     reducers: {
       clearError: state => {
@@ -43,12 +45,16 @@ const signInSlice = createSlice({
         state.user = null;
         console.log('Vous êtes déconnecté !');
       },
+      setToken: (state, action) => {
+        state.token = action.payload;
+      },
     },
     extraReducers: builder => {
       builder
         .addCase(signInUser.fulfilled, (state, action) => {
           state.user = action.payload;
           state.error = null;
+          state.token = action.payload.token;
         })
         .addCase(signInUser.rejected, (state, action) => {
           state.user = null;
@@ -57,8 +63,6 @@ const signInSlice = createSlice({
     },
   });
 
-export const { clearError } = signInSlice.actions;
-export const { Logout } = signInSlice.actions;
+export const { clearError, Logout, setToken } = signInSlice.actions;
 
 export default signInSlice.reducer;
-

@@ -1,5 +1,31 @@
+import { useSelector, useDispatch} from 'react-redux';
+import { profileUser } from "./ProfileSlice";
+import { useEffect } from 'react';
+
 export function Profile() {
+  const dispatch = useDispatch();
+  const { profile, error } = useSelector(state => state.profile);
+
+  useEffect(() => {
+    dispatch(profileUser());
+  }, [dispatch]); 
+
+  
     return (
+      <>
+     <div>
+      {error && <div>Une erreur sest produite : {error}</div>}
+      {profile && (
+        <div>
+          <h2>Profil Utilisateur</h2>
+          <p>Id : {profile.body.id}</p>
+          <p>Email: {profile.body.email}</p>
+          <p>firstname: {profile.body.firstName}</p>
+          <p>lastname: {profile.body.lastName}</p>
+          <p>username: {profile.body.userName}</p>
+        </div>
+      )}
+    </div>
         <main className="main bg-dark">
           <div className="header">
             <h1>Welcome back<br />Tony Jarvis!</h1>
@@ -37,5 +63,6 @@ export function Profile() {
             </div>
           </section>
         </main>
+        </>
       );
 }
