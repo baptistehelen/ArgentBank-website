@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signInUser, clearError } from "./SigninSlice";
+import { signInUser, clearError } from "./LoginSlice";
 import { useNavigate } from 'react-router-dom';
 
-export function Signin() {
+export function Login() {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.signIn.error);
   const navigate = useNavigate();

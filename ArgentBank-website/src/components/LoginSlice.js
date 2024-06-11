@@ -18,10 +18,10 @@ export const signInUser = createAsyncThunk(
       
       const data = await response.json();
       
-      console.log('Connexion réussie !', data); // Afficher un message de succès dans la console
+      console.log('Connexion réussie !', data); 
       return { user: data, redirectTo: '/profile' };
     } catch (error) {
-      console.error('Erreur de connexion :', error); // Afficher une erreur dans la console en cas d'échec
+      console.error('Erreur de connexion :', error); 
       throw error;
     }
   }
