@@ -300,3 +300,33 @@ html {
     }
   }
   
+  .error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.error-page h1 {
+    font-size: 6rem;
+    margin: 0;
+}
+
+.error-page p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.error-page-link {
+    font-size: 1rem;
+    color: #42b983;
+    text-decoration: none;
+}
+
+.error-page-link:hover {
+    text-decoration: underline;
+}

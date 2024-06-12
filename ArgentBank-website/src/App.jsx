@@ -5,8 +5,9 @@ import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 import { Navbar } from "./layout/Navbar";
 import { Footer } from "./layout/Footer";
-import { Navigate } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
+import ErrorPage from './components/ErrorPage';
+
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </Router>

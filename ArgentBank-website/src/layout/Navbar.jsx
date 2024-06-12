@@ -12,7 +12,7 @@ export function Navbar() {
   };
   return (
     <nav className="main-nav">
-      <Link className="main-nav-logo" to="/">
+      <Link className="main-nav-logo" to="/" onClick={user ? handleLogout : null}>
         <img
           className="main-nav-logo-image"
           src={logo}
