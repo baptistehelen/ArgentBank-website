@@ -1,13 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { profileUser } from './ProfileSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import EditProfile from './EditProfile'; 
 
 export function Profile() {
   const dispatch = useDispatch();
   const { profile, error } = useSelector(state => state.profile);
   const navigate = useNavigate(); 
-  const {user} = useSelector(state => state.signIn);
+  const { user } = useSelector(state => state.signIn);
+  
+  const [open, setOpen] = useState(false); 
 
   useEffect(() => {
     dispatch(profileUser());
@@ -22,6 +25,10 @@ export function Profile() {
   if (!user) {
     return null;
   }
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   return (
     <>
@@ -42,8 +49,9 @@ export function Profile() {
               </>
             )}
           </h1>
-          <button className="edit-button">Edit Name</button>
+          <button className="edit-button" onClick={handleClick}>Edit Name</button>
         </div>
+        {open && <EditProfile />} 
         <h2 className="sr-only">Accounts</h2>
         <section className="account">
           <div className="account-content-wrapper">
