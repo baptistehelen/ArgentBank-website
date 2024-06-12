@@ -258,7 +258,17 @@ html {
     font-weight: bold;
     padding: 10px;
   }
-  
+
+  .edit-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 300px;
+    margin: auto;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+
   .header {
     color: #fff;
     margin-bottom: 2rem;

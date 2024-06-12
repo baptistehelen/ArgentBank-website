@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { profileUser } from './ProfileSlice';
 import { useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import EditProfile from './EditProfile'; 
 
 export function Profile() {
   const dispatch = useDispatch();
   const { profile, error } = useSelector(state => state.profile);
-  const navigate = useNavigate(); 
+
   const { user } = useSelector(state => state.signIn);
   const [updateProfile, setUpdateProfile] = useState(false);
 
@@ -22,11 +22,6 @@ export function Profile() {
     dispatch(profileUser());
   }, [dispatch, updateProfile]);
 
-  useEffect(() => {
-    if (!user) {
-      navigate('/'); 
-    }
-  }, [profile, navigate, user]);
 
   if (!user) {
     return null;
@@ -58,7 +53,7 @@ export function Profile() {
           </h1>
           <button className="edit-button" onClick={handleClick}>Edit Name</button>
         </div>
-        {open && <EditProfile maj={handleProfileUpdate}/>} 
+        {open && <EditProfile maj={handleProfileUpdate} handleClick={handleClick}/>} 
         <h2 className="sr-only">Accounts</h2>
         <section className="account">
           <div className="account-content-wrapper">

@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editProfile } from './EditProfileSlice';
 import PropTypes from 'prop-types';
 
-function EditProfile({ maj }) {
+function EditProfile({ maj, handleClick }) {
   const [userName, setUserName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const { profile } = useSelector(state => state.profile);
 
   const dispatch = useDispatch();
   const isLoading = useSelector(state => state.profile.isLoading);
@@ -31,7 +32,8 @@ function EditProfile({ maj }) {
   };
 
   return (
-    <div>
+    <div className='edit-content'>
+    <div className='edit-contentInfo'>
       <h2>Edit User Info</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -48,7 +50,7 @@ function EditProfile({ maj }) {
           <input
             type="text"
             id="firstName"
-            value="Votre prénom"
+            value={profile.body.firstName}
             readOnly
             style={readonlyStyle}
           />
@@ -58,20 +60,23 @@ function EditProfile({ maj }) {
           <input
             type="text"
             id="lastName"
-            value="Votre nom"
+            value={profile.body.lastName}
             readOnly
             style={readonlyStyle}
           />
         </div>
         {errorMessage && <div>{errorMessage}</div>}
         <button type="submit" disabled={isLoading}>Save</button>
+        <button type="button" onClick={handleClick}>Cancel</button>
       </form>
+    </div>
     </div>
   );
 }
 
 EditProfile.propTypes = {
   maj: PropTypes.any, 
+  handleClick: PropTypes.any,
 };
 
 
