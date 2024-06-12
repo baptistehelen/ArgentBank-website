@@ -14,7 +14,7 @@ export function Profile() {
 
   useEffect(() => {
     dispatch(profileUser());
-  }, [dispatch]);
+  }, [dispatch, profile, user]);
 
   useEffect(() => {
     if (!user) {
@@ -85,5 +85,6 @@ export function Profile() {
         </section>
       </main>
     </>
+    
   );
 }
