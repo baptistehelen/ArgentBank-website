@@ -58,12 +58,6 @@ const profileSlice = createSlice({
         const { user } = action.payload;
         state.profile = { ...user };
         state.error = null;
-  
-        if (user && user.body && user.body.email) {
-          console.log('Email récupéré !', user.body.email);
-        } else {
-          console.error('L\'email n\'est pas défini dans la réponse.');
-        }
       })
       .addCase(profileUser.rejected, (state, action) => {
         state.error = action.error.message;
