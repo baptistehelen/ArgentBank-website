@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editProfile } from './EditProfileSlice';
+import PropTypes from 'prop-types';
 
-function EditProfile() {
+function EditProfile({ maj }) {
   const [userName, setUserName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -16,6 +17,7 @@ function EditProfile() {
       .then(() => {
         setUserName('');
         setErrorMessage('');
+        maj();
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -67,5 +69,10 @@ function EditProfile() {
     </div>
   );
 }
+
+EditProfile.propTypes = {
+  maj: PropTypes.any, 
+};
+
 
 export default EditProfile;
