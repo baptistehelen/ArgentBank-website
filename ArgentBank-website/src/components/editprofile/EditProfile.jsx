@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editProfile } from './EditProfileSlice';
+import { editProfile } from '../../slices/EditProfileSlice';
 import PropTypes from 'prop-types';
 
 function EditProfile({ maj, handleClick }) {
@@ -42,7 +42,9 @@ function EditProfile({ maj, handleClick }) {
             type="text"
             id="userName"
             value={userName}
+            placeholder={profile.body.userName}
             onChange={(e) => setUserName(e.target.value)}
+            autoComplete="username"
           />
         </div>
         <div>

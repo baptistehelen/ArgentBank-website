@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch} from 'react-redux'; 
-import logo from "./../../../designs/img/argentBankLogo.png";
-import { Logout } from "../components/LoginSlice";
+import logo from "../../assets/images/argentBankLogo.png";  
+import { Logout } from "../../slices/LoginSlice";
 
 export function Navbar() {
   const user = useSelector(state => state.signIn.user);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signInUser, clearError } from "./LoginSlice";
+import { signInUser, clearError } from "../slices/LoginSlice";
 import { useNavigate } from 'react-router-dom';
 
 export function Login() {
@@ -15,7 +15,6 @@ export function Login() {
 
   const [rememberMe, setRememberMe] = useState(false);
 
-  // Effect to load credentials from localStorage
   useEffect(() => {
     const savedEmail = localStorage.getItem("rememberMeEmail");
     const savedPassword = localStorage.getItem("rememberMePassword");
@@ -62,11 +61,13 @@ export function Login() {
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Username</label>
+          
             <input
               type="text"
               id="email"
               value={formData.email}
               onChange={handleChange}
+              autoComplete="email"
             />
           </div>
           <div className="input-wrapper">
@@ -76,6 +77,7 @@ export function Login() {
               id="password"
               value={formData.password}
               onChange={handleChange}
+              autoComplete="current-password"
             />
           </div>
           <div className="input-remember">

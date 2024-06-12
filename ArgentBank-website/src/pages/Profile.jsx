@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { profileUser } from './ProfileSlice';
+import { profileUser } from '../slices/ProfileSlice';
 import { useEffect, useState} from 'react';
 
-import EditProfile from './EditProfile'; 
+import EditProfile from '../components/EditProfile/EditProfile'; 
 
 export function Profile() {
   const dispatch = useDispatch();

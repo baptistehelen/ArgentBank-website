@@ -1,12 +1,12 @@
-import "./App.css";
+import "./assets/style/App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Profile } from "./components/Profile";
-import { Home } from "./components/Home";
-import { Login } from "./components/Login";
-import { Navbar } from "./layout/Navbar";
-import { Footer } from "./layout/Footer";
-import { PrivateRoute } from "./PrivateRoute";
-import ErrorPage from './components/ErrorPage';
+import { Profile } from "./pages/Profile";
+import { Home } from "./pages//Home";
+import { Login } from "./pages//Login";
+import { Navbar } from "./components/common/Navbar";
+import { Footer } from "./components/common/Footer";
+import { PrivateRoute } from "./components/common/PrivateRoute";
+import ErrorPage from './pages/ErrorPage';
 
 
 function App() {
