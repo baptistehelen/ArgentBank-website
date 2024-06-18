@@ -71,7 +71,7 @@ html {
   }
   
   .hero {
-    background-image: url('../images/bank-tree.jpeg');
+    background-image: url('../images/bank-tree.webp');
     background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -358,4 +358,24 @@ html {
   margin-top: 7px;
   margin-left: 50px;
   height: 30px;
+}
+.input-readonly {
+  background-color: #f0f0f0; 
+  color: #666; 
+  cursor: not-allowed; 
+}
+
+.input-container {
+  margin-bottom: 10px; 
+}
+
+.submit-button {
+  padding: 8px;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  margin-right: 5px;
+  margin-left: 5px;
 }

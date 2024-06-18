@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 
 
 export function PrivateRoute({ children }) {
-    const { user: authUser } = useSelector((state) => state.signIn)
+    const { user } = useSelector((state) => state.signIn)
     
-    if (!authUser) {
+    if (!user) {
         return <Navigate to="/" />
     }
 

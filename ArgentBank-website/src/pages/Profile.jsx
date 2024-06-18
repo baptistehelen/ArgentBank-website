@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { profileUser } from '../slices/ProfileSlice';
-import EditProfile from '../components/EditProfile/EditProfile';
+import EditProfile from '../components/editprofile/EditProfile';
 import Account from '../components/accounts/Account';
 
 export function Profile() {

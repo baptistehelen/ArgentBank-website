@@ -16,6 +16,7 @@ export function Login() {
 
   const [rememberMe, setRememberMe] = useState(false);
 
+  // Check if the user has checked the "Remember me" checkbox
   useEffect(() => {
     const savedEmail = localStorage.getItem("rememberMeEmail");
     const savedPassword = localStorage.getItem("rememberMePassword");
@@ -37,6 +38,7 @@ export function Login() {
     setRememberMe(e.target.checked);
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signInUser(formData)).then(({ payload }) => {

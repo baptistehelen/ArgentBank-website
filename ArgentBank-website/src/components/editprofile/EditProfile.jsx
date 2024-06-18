@@ -1,9 +1,8 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editProfile } from '../../slices/EditProfileSlice';
 import PropTypes from 'prop-types';
-import InputField from '../input/InputField'; 
-import "../../assets/style/App.css";
+
 
 function EditProfile({ maj, handleClick }) {
   const [userName, setUserName] = useState('');
@@ -15,6 +14,10 @@ function EditProfile({ maj, handleClick }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!userName.trim()) {
+      setErrorMessage("Username cannot be empty");
+      return;
+    }
     dispatch(editProfile(userName))
       .unwrap()
       .then(() => {
@@ -29,40 +32,53 @@ function EditProfile({ maj, handleClick }) {
 
   return (
     <div className='edit-content'>
-      <div className='edit-contentInfo'>
-        <h2>Edit User Info</h2>
-        <form onSubmit={handleSubmit}>
-          <InputField
+    <div className='edit-contentInfo'>
+      <h2>Edit User Info</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label htmlFor="userName">UserName:</label>
+          <input
+            type="text"
             id="userName"
-            label="Username"
             value={userName}
+            placeholder={profile.body.userName}
             onChange={(e) => setUserName(e.target.value)}
             autoComplete="username"
           />
-          <InputField
+        </div>
+        <div className="input-container">
+          <label htmlFor="firstName">First Name:</label>
+          <input 
+            type="text"
             id="firstName"
-            label="First Name"
             value={profile.body.firstName}
             readOnly
+            className="input-readonly"
           />
-          <InputField
+        </div>
+        <div className="input-container">
+          <label htmlFor="lastName">Last Name:</label>
+          <input 
+            type="text"
             id="lastName"
-            label="Last Name"
             value={profile.body.lastName}
             readOnly
+            className="input-readonly"
           />
-          {errorMessage && <div>{errorMessage}</div>}
-          <button type="submit" disabled={isLoading}>Save</button>
-          <button type="button" onClick={handleClick}>Cancel</button>
-        </form>
-      </div>
+        </div>
+        {errorMessage && <div>{errorMessage}</div>}
+        <button className='submit-button' type="submit" disabled={isLoading}>Save</button>
+        <button className='submit-button' type="button" onClick={handleClick}>Cancel</button>
+      </form>
+    </div>
     </div>
   );
 }
 
 EditProfile.propTypes = {
-  maj: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  maj: PropTypes.any, 
+  handleClick: PropTypes.any,
 };
+
 
 export default EditProfile;
