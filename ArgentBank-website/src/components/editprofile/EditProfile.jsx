@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import  { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editProfile } from '../../slices/EditProfileSlice';
 import PropTypes from 'prop-types';
+import InputField from '../input/InputField'; 
+import "../../assets/style/App.css";
 
 function EditProfile({ maj, handleClick }) {
   const [userName, setUserName] = useState('');
@@ -25,61 +27,42 @@ function EditProfile({ maj, handleClick }) {
       });
   };
 
-  const readonlyStyle = {
-    backgroundColor: '#f2f2f2',
-    color: '#333',
-    cursor: 'not-allowed',
-  };
-
   return (
     <div className='edit-content'>
-    <div className='edit-contentInfo'>
-      <h2>Edit User Info</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="userName">UserName:</label>
-          <input
-            type="text"
+      <div className='edit-contentInfo'>
+        <h2>Edit User Info</h2>
+        <form onSubmit={handleSubmit}>
+          <InputField
             id="userName"
+            label="Username"
             value={userName}
-            placeholder={profile.body.userName}
             onChange={(e) => setUserName(e.target.value)}
             autoComplete="username"
           />
-        </div>
-        <div>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
+          <InputField
             id="firstName"
+            label="First Name"
             value={profile.body.firstName}
             readOnly
-            style={readonlyStyle}
           />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            type="text"
+          <InputField
             id="lastName"
+            label="Last Name"
             value={profile.body.lastName}
             readOnly
-            style={readonlyStyle}
           />
-        </div>
-        {errorMessage && <div>{errorMessage}</div>}
-        <button type="submit" disabled={isLoading}>Save</button>
-        <button type="button" onClick={handleClick}>Cancel</button>
-      </form>
-    </div>
+          {errorMessage && <div>{errorMessage}</div>}
+          <button type="submit" disabled={isLoading}>Save</button>
+          <button type="button" onClick={handleClick}>Cancel</button>
+        </form>
+      </div>
     </div>
   );
 }
 
 EditProfile.propTypes = {
-  maj: PropTypes.any, 
-  handleClick: PropTypes.any,
+  maj: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
-
 
 export default EditProfile;

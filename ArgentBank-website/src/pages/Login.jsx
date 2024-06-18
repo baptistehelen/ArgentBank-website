@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signInUser, clearError } from "../slices/LoginSlice";
 import { useNavigate } from 'react-router-dom';
+import InputField from '../components/input/InputField';
 
 export function Login() {
   const dispatch = useDispatch();
@@ -59,27 +60,20 @@ export function Login() {
         <h1>Sign In</h1>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <form onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="email">Username</label>
-          
-            <input
-              type="text"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              autoComplete="email"
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              autoComplete="current-password"
-            />
-          </div>
+          <InputField
+            id="email"
+            label="Username"
+            value={formData.email}
+            onChange={handleChange}
+            autoComplete="email"
+          />
+          <InputField
+            id="password"
+            label="Password"
+            value={formData.password}
+            onChange={handleChange}
+            autoComplete="current-password"
+          />
           <div className="input-remember">
             <input
               type="checkbox"

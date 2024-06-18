@@ -170,7 +170,7 @@ html {
     background-color: white;
     width: 300px;
     margin: 0 auto;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
     padding: 2rem;
   }
   
@@ -329,4 +329,33 @@ html {
 
 .error-page-link:hover {
     text-decoration: underline;
+}
+
+.nav-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+}
+
+.nav-user img {
+    height: 40px;
+    margin-left: 5px;
+}
+
+.main-nav-log {
+    display: flex; 
+   justify-content: center; 
+    align-items: center;
+}
+
+.profile-h1 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.main-nav-item img {
+  margin-top: 7px;
+  margin-left: 50px;
+  height: 30px;
 }
