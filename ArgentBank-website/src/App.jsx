@@ -1,8 +1,8 @@
 import "./assets/style/App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Profile } from "./pages/Profile";
-import { Home } from "./pages//Home";
-import { Login } from "./pages//Login";
+import { Home } from "./pages/Home"
+import { Login } from "./pages/Login";
 import { Navbar } from "./components/common/Navbar";
 import { Footer } from "./components/common/Footer";
 import { PrivateRoute } from "./components/common/PrivateRoute";
