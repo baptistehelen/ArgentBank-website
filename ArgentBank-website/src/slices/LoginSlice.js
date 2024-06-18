@@ -13,15 +13,15 @@ export const signInUser = createAsyncThunk(
       });
       
       if (!response.ok) {
-        throw new Error('Impossible de se connecter');
+        throw new Error('Impossible de se connecter, mot de passe ou email incorrect.');
       }
       
       const data = await response.json();
       
       const token = data.body.token;
-      console.log('Token récupéré !', token);
 
-      console.log('Connexion réussie !', data); 
+
+      console.log('Connexion réussie !'); 
       return { user: data, redirectTo: '/profile', token };
     } catch (error) {
       console.error('Erreur de connexion :', error); 

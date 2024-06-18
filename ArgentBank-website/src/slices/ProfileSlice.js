@@ -7,7 +7,6 @@ export const profileUser = createAsyncThunk(
       const state = getState(); 
       const token = state.signIn.token; 
       
-      console.log('Token récupéré ! 2', token);
       if (!token) {
         throw new Error('Token non défini'); 
       }
@@ -26,7 +25,6 @@ export const profileUser = createAsyncThunk(
       
       const data = await response.json();
       
-      console.log('Profil récupéré !', data); 
       return { user: data, redirectTo: '/profile' };
     } catch (error) {
       console.error('Erreur de connexion :', error); 

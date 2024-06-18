@@ -25,8 +25,7 @@ export const editProfile = createAsyncThunk(
       }
       
       const data = await response.json();
-      
-      console.log('Changement de username au Profile reussi !', data); 
+
       
       return data;
     } catch (error) {
